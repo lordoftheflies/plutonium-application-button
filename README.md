@@ -1,6 +1,6 @@
-# \<plutonium-avatar-button\>
+# plutonium-application-button
 
-Avatar menu button.
+Application chooser button.
 
 ## Install the Polymer-CLI
 
