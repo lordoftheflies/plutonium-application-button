@@ -4,6 +4,7 @@
 <link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../paper-item/paper-item.html">
+<link rel="import" href="../iron-selector/iron-selector.html">
 <link rel="import" href="../paper-menu/paper-menu.html">
 <link rel="import" href="../paper-menu-button/paper-menu-button.html">
 
@@ -42,10 +43,9 @@ Avatar menu button.
             horizontal-align="right"
             vertical-align="top">
             <iron-icon icon="icons:apps" class="avatar-circle dropdown-trigger"></iron-icon>
-            <paper-menu class="dropdown-content" selectable=".menu">
+            <paper-menu class="dropdown-content" selected="[[currentApplication]]" attr-for-selected="id">
                 <template is="dom-repeat" items="[[applications]]" as="application">
-
-                    <a href="[[application.url]]" class="menu">
+                    <a id="[[application.id]]" href="[[application.url]]" class="menu">
                         <paper-item class="menu">
                             <iron-icon icon="[[application.icon]]" item-icon></iron-icon>
                             <span id="profileMenuTitle">[[application.name]]</span>
@@ -66,6 +66,10 @@ Avatar menu button.
                     type: Array,
                     notify: true,
                     value: []
+                },
+                currentApplication: {
+                    type: String,
+                    notify: true
                 }
             },
             observers: [
