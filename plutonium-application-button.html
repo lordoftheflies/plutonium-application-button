@@ -1,0 +1,93 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--<link rel="import" href="../">-->
+<link rel="import" href="../iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../paper-item/paper-item.html">
+<link rel="import" href="../paper-menu/paper-menu.html">
+<link rel="import" href="../paper-menu-button/paper-menu-button.html">
+
+<!--
+`plutonium-application-button`
+Avatar menu button.
+
+@demo demo/index.html 
+-->
+
+<dom-module id="plutonium-application-button">
+
+    <template>
+
+        <style>
+            :host {
+                display: block;
+                padding: 10px;
+            }
+
+            .avatar-circle {
+                display: inline-block;
+                height: 32px;
+                width: 32px;
+                border-radius: 50%;
+                background: #ddd;
+                line-height: 32px;
+                font-size: 15px;
+                color: #555;
+                text-align: center;
+            }
+
+        </style>
+
+        <paper-menu-button
+            horizontal-align="right"
+            vertical-align="top">
+            <iron-icon icon="icons:apps" class="avatar-circle dropdown-trigger"></iron-icon>
+            <paper-menu class="dropdown-content" selectable=".menu">
+                <template is="dom-repeat" items="[[applications]]" as="application">
+
+                    <a href="[[application.url]]" class="menu">
+                        <paper-item class="menu">
+                            <iron-icon icon="[[application.icon]]" item-icon></iron-icon>
+                            <span id="profileMenuTitle">[[application.name]]</span>
+                        </paper-item>
+                    </a>
+                </template>
+            </paper-menu>
+        </paper-menu-button>
+
+    </template>
+
+    <script>
+
+        Polymer({
+            is: 'plutonium-application-button',
+            properties: {
+                applications: {
+                    type: Array,
+                    notify: true,
+                    value: []
+                }
+            },
+            observers: [
+                '_extractMonogram(user, displayUniqueAttribute, displayNameAttribute)'
+            ],
+            _extractMonogram: function (user, displayNameAttribute) {
+                var result = '';
+                var words = user[displayNameAttribute].split(' ');
+                for (var i = 0; i < words.length; i++) {
+                    if (words[i].length > 0)
+                        result += words[i][0].toUpperCase();
+                }
+                this.monogram = result;
+            },
+            _computeDisplayName: function (user, displayNameAttribute) {
+                return user[displayNameAttribute];
+            },
+            _computeDisplayUnique: function (user, displayUniqueAttribute) {
+                return user[displayUniqueAttribute];
+            }
+        });
+
+    </script>
+
+</dom-module>

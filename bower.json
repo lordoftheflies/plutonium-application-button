@@ -1,0 +1,23 @@
+{
+    "name": "plutonium-application-button",
+    "description": "Application chooser menu button.",
+    "main": "plutonium-application-button.html",
+    "dependencies": {
+        "polymer": "Polymer/polymer#^1.4.0",
+        "paper-item": "polymerelements/paper-item#^1.2.1",
+        "paper-menu": "polymerelements/paper-menu#^1.2.2",
+        "paper-menu-button": "polymerelements/paper-menu-button#^1.5.0"
+    },
+    "devDependencies": {
+        "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+        "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+        "web-component-tester": "^4.0.0",
+        "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+    },
+    "licenses": [
+        {
+            "type": "Apache-2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0"
+        }
+    ]
+}
