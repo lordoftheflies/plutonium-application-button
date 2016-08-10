@@ -43,7 +43,7 @@ Avatar menu button.
             horizontal-align="right"
             vertical-align="top">
             <iron-icon icon="icons:apps" class="avatar-circle dropdown-trigger"></iron-icon>
-            <paper-menu class="dropdown-content" selected="[[currentApplication]]" attr-for-selected="id">
+            <paper-menu class="dropdown-content" selected="{{currentApplication}}" attr-for-selected="id">
                 <template is="dom-repeat" items="[[applications]]" as="application">
                     <a id="[[application.id]]" href="[[application.url]]" class="menu">
                         <paper-item class="menu">
